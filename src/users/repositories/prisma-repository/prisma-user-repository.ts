@@ -4,6 +4,24 @@ import { ResponseUserDTO } from "../dto/response-user-dto";
 import { UserRepository } from "../user-repository";
 
 export class PrismaUserRepository implements UserRepository {
+    async findByEmail (email: string): Promise<ResponseUserDTO | null> {
+        const userDb = await prisma.user.findFirst({
+            where: {
+                email: email
+            }
+        })
+
+        if (userDb != null) {
+            return {
+                email: userDb.email,
+                password: userDb.password,
+                id: userDb.id
+            }
+        }
+        else 
+            return userDb
+    }
+
     async create (user: RequestUserDTO): Promise<void> {
         await prisma.user.create({
             data: {

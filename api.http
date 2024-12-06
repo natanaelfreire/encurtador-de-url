@@ -1,3 +1,5 @@
+### Users
+
 GET http://localhost:3000/users
 
 ###
@@ -27,3 +29,13 @@ content-type: application/json
 ### 
 
 DELETE http://localhost:3000/users/3
+
+### Auth
+
+POST http://localhost:3000/authentication
+content-type: application/json
+
+{
+    "email": "natanael@email.com",
+    "password": "12345abc"
+}
