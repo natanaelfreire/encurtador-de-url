@@ -1,4 +1,4 @@
-import { User } from '../entities/user.entity'
+import { User } from '../entities/user'
 import { UserRepository } from '../repositories/user-repository'
 import { UpdateUserDto } from '../dto/update-user.dto'
 

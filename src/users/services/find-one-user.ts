@@ -1,4 +1,4 @@
-import { User } from "../entities/user.entity";
+import { User } from "../entities/user";
 import { UserRepository } from "../repositories/user-repository";
 
 export class FindOneUser {
