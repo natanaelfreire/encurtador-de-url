@@ -1,0 +1,29 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/1
+
+###
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "email": "matheus@email.com",
+    "password": "04892wwm"
+}
+
+###
+
+PUT http://localhost:3000/users/3
+content-type: application/json
+
+{
+    "email": "matheus@email.com.br",
+    "password": "04892wwm"
+}
+
+### 
+
+DELETE http://localhost:3000/users/3

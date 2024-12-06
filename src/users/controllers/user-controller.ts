@@ -7,7 +7,7 @@ import { UpdateUser } from '../services/update-user'
 import { RemoveUser } from '../services/remove-user'
 
 export default class UserController {
-    async index (request: Request, response: Response) {
+    async index (request: Request, response: Response): Promise<any> {
         try {
             const prismaUserRepository = new PrismaUserRepository()
             const findAllUsers = new FindAllUsers(prismaUserRepository)
@@ -21,7 +21,7 @@ export default class UserController {
         }
     }
 
-    async create (request: Request, response: Response) {
+    async create (request: Request, response: Response): Promise<any> {
         try {
             const {
                 email,
@@ -43,7 +43,7 @@ export default class UserController {
         }
     }
 
-    async show (request: Request, response: Response) {
+    async show (request: Request, response: Response): Promise<any> {
         try {
             const { id } = request.params
 
@@ -65,7 +65,7 @@ export default class UserController {
         }
     }
 
-    async update (request: Request, response: Response) {
+    async update (request: Request, response: Response): Promise<any> {
         try {
             const {
                 email,
@@ -90,7 +90,7 @@ export default class UserController {
         }
     }
 
-    async delete (request: Request, response: Response) {
+    async delete (request: Request, response: Response): Promise<any> {
         try {
             const { id } = request.params
             const prismaUserRepository = new PrismaUserRepository()
