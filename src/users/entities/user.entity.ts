@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs'
 
 export interface UserProps {
     id?: number
@@ -20,6 +21,13 @@ export class User {
         return this.props.password
     }
 
+    private generateHash (password: string): string {
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(password, salt)
+    
+        return hash
+      }
+
     private validateUser (props: UserProps) {
         if (props.email == null || props.email.length === 0) {
             throw new Error('Preencha o campo "email"')
@@ -37,8 +45,15 @@ export class User {
     constructor (props: UserProps) {
         this.validateUser(props)
 
+        let password = props.password
+
+        if (props.id == null) {
+            password = this.generateHash(props.password)
+        }
+
         this.props = {
-            ...props
+            ...props,
+            password
         }
     }
 
