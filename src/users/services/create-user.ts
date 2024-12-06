@@ -1,6 +1,6 @@
 import { User } from '../entities/user'
 import { UserRepository } from '../repositories/user-repository'
-import { CreateUserDto } from '../dto/create-user.dto'
+import { CreateUserDto } from '../dto/create-user-dto'
 
 type CreateUserResponse = User
 

@@ -1,6 +1,6 @@
 import { User } from '../entities/user'
 import { UserRepository } from '../repositories/user-repository'
-import { UpdateUserDto } from '../dto/update-user.dto'
+import { UpdateUserDto } from '../dto/update-user-dto'
 import { ResponseUserDTO } from '../repositories/dto/response-user-dto'
 
 export class UpdateUser {
