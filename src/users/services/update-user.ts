@@ -1,8 +1,7 @@
 import { User } from '../entities/user'
 import { UserRepository } from '../repositories/user-repository'
 import { UpdateUserDto } from '../dto/update-user.dto'
-
-type UpdateUserResponse = User
+import { ResponseUserDTO } from '../repositories/dto/response-user-dto'
 
 export class UpdateUser {
   constructor (private readonly userRepository: UserRepository) { }
@@ -11,7 +10,7 @@ export class UpdateUser {
     id,
     email,
     password
-  }: UpdateUserDto): Promise<UpdateUserResponse> {
+  }: UpdateUserDto): Promise<ResponseUserDTO> {
     const user = await this.userRepository.findOne(id)
 
     if (user == null) { throw new Error('Usuário não encontrado.') }

@@ -26,7 +26,7 @@ export class User {
         const hash = bcrypt.hashSync(password, salt)
     
         return hash
-      }
+    }
 
     private validateUser (props: UserProps) {
         if (props.email == null || props.email.length === 0) {

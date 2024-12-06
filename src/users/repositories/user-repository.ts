@@ -1,10 +1,11 @@
-import { User } from '../entities/user'
+import { RequestUserDTO } from './dto/request-user-dto'
+import { ResponseUserDTO } from './dto/response-user-dto'
 
 export interface UserRepository {
-  create: (user: User) => Promise<void>
-  findOne: (id: number) => Promise<User | null>
-  findAll: () => Promise<User[]>
-  update: (id: number, user: User) => Promise<void>
-  remove: (id: number) => Promise<void>
-  validatePassword: (name: string, password: string) => Promise<boolean>
+    create: (user: RequestUserDTO) => Promise<void>
+    findOne: (id: number) => Promise<ResponseUserDTO | null>
+    findAll: () => Promise<ResponseUserDTO[]>
+    update: (id: number, user: RequestUserDTO) => Promise<void>
+    remove: (id: number) => Promise<void>
+    // validatePassword: (name: string, password: string) => Promise<boolean>
 }
