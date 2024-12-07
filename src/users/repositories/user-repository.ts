@@ -8,5 +8,4 @@ export interface UserRepository {
     findAll: () => Promise<ResponseUserDTO[]>
     update: (id: number, user: RequestUserDTO) => Promise<void>
     remove: (id: number) => Promise<void>
-    // validatePassword: (name: string, password: string) => Promise<boolean>
 }
