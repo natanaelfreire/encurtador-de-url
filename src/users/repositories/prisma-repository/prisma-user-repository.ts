@@ -85,6 +85,5 @@ export class PrismaUserRepository implements UserRepository {
         })
     }
 
-    // validatePassword: (name: string, password: string) => Promise<boolean>;
 
 }

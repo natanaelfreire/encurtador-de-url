@@ -1,6 +1,3 @@
-import { CHARS } from "../utilities/chars"
-import { getRandomValueFromArray } from "../utilities/get-random-value-from-array"
-
 export interface UrlProps {
     id?: number
     originalUrl: string
@@ -27,37 +24,27 @@ export class Url {
         return this.props.clickCounts
     }
 
-    private generateShortUrl (): string {
-        let shortUrl = ''
-
-        for (let i = 0; i < 6; i++) {
-            const char = getRandomValueFromArray(CHARS);
-            shortUrl += char
-        }
-
-        return shortUrl
-    }
-
     private validateUrl (props: UrlProps) {
         if (props.originalUrl == null || props.originalUrl.length === 0) {
             throw new Error('Preencha o campo "Url original"')
+        }
+
+        if (props.shortUrl == null || props.shortUrl.length === 0) {
+            throw new Error('Preencha o campo "Url encurtada"')
         }
     }
 
     constructor (props: UrlProps) {
         this.validateUrl(props)
         let clickCounts = props.clickCounts
-        let shortUrl = props.shortUrl
 
         if (props.id == null) {
             clickCounts = 0
-            shortUrl = this.generateShortUrl()
         }
 
         this.props = {
             ...props,
-            clickCounts,
-            shortUrl
+            clickCounts
         }
     }
 }

@@ -7,15 +7,17 @@ export class CreateUrl {
 
     async execute ({
         id,
+        originalUrl,
         shortUrl,
-        originalUrl
+        clickCounts
       }: UpdateUrlDto): Promise<void> {
         const url = new Url({
+            id: id,
             originalUrl: originalUrl,
-            clickCounts: 0,
-            shortUrl: shortUrl
+            shortUrl: shortUrl,
+            clickCounts: clickCounts
         })
     
-        await this.urlRepository.update(id, { originalUrl: url.originalUrl })
+        await this.urlRepository.update(id, url)
     }
 }
