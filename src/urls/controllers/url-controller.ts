@@ -9,7 +9,7 @@ import { GetUserIdByToken } from '../../authentication/services/get-user-id-by-t
 import { CountsClickShortUrl } from '../services/counts-click-short-url'
 
 export default class UrlController {
-    async indexByUserId (request: Request, response: Response): Promise<any> {
+    async indexByUser (request: Request, response: Response): Promise<any> {
         try {
             const getUserIdByToken = new GetUserIdByToken()
             const userId = getUserIdByToken.execute(request.headers.authorization ?? '')

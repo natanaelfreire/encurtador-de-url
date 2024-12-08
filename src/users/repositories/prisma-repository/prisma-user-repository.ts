@@ -5,21 +5,22 @@ import { UserRepository } from "../user-repository";
 
 export class PrismaUserRepository implements UserRepository {
     async findByEmail (email: string): Promise<ResponseUserDTO | null> {
-        const userDb = await prisma.user.findFirst({
+        const user = await prisma.user.findFirst({
             where: {
-                email: email
+                email: email,
+                removedAt: null
             }
         })
 
-        if (userDb != null) {
+        if (user !== null) {
             return {
-                email: userDb.email,
-                password: userDb.password,
-                id: userDb.id
+                email: user.email,
+                password: user.password,
+                id: user.id
             }
         }
-        else 
-            return userDb
+        else    
+            return user        
     }
 
     async create (user: RequestUserDTO): Promise<void> {
@@ -34,7 +35,8 @@ export class PrismaUserRepository implements UserRepository {
     async findOne (id: number): Promise<ResponseUserDTO | null> {
         const userDb = await prisma.user.findFirst({
             where: {
-                id: id
+                id: id,
+                removedAt: null
             }
         })
 
@@ -50,7 +52,11 @@ export class PrismaUserRepository implements UserRepository {
     }
 
     async findAll (): Promise<ResponseUserDTO[]> {
-        const usersDb = await prisma.user.findMany()
+        const usersDb = await prisma.user.findMany({
+            where: {
+                removedAt: null
+            }
+        })
 
         const users = usersDb.map(u => {
             let item: ResponseUserDTO = {
@@ -68,7 +74,8 @@ export class PrismaUserRepository implements UserRepository {
     async update (id: number, user: RequestUserDTO): Promise<void> {
         await prisma.user.update({
             where: {
-                id: id
+                id: id,
+                removedAt: null
             },
             data: {
                 email: user.email,
@@ -78,12 +85,13 @@ export class PrismaUserRepository implements UserRepository {
     }
 
     async remove (id: number): Promise<void> {
-        await prisma.user.delete({
+        await prisma.user.update({
             where: {
                 id: id
+            },
+            data: {
+                removedAt: new Date().toISOString()
             }
         })
     }
-
-
 }

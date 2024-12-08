@@ -50,12 +50,6 @@ export default class UserController {
             const prismaUserRepository = new PrismaUserRepository()
             const findOne = new FindOneUser(prismaUserRepository)
             const user = await findOne.execute(Number(id))
-
-            if (user == null) {
-                return response.status(400).json({
-                    error: 'Usuário não encontrado.'
-                })
-            }
         
             return response.status(200).json(user)
             
@@ -93,6 +87,7 @@ export default class UserController {
     async delete (request: Request, response: Response): Promise<any> {
         try {
             const { id } = request.params
+
             const prismaUserRepository = new PrismaUserRepository()
             const removeUser = new RemoveUser(prismaUserRepository)
             await removeUser.execute(Number(id))

@@ -30,11 +30,11 @@ export class Url {
     }
 
     private validateUrl (props: UrlProps) {
-        if (props.originalUrl == null || props.originalUrl.length === 0) {
+        if (props.originalUrl === null || props.originalUrl === undefined || props.originalUrl.length === 0) {
             throw new Error('Preencha o campo "Url original"')
         }
 
-        if (props.shortUrl == null || props.shortUrl.length === 0) {
+        if (props.shortUrl === null || props.shortUrl === undefined || props.shortUrl.length === 0) {
             throw new Error('Preencha o campo "Url encurtada"')
         }
     }
@@ -43,7 +43,7 @@ export class Url {
         this.validateUrl(props)
         let clickCounts = props.clickCounts
 
-        if (props.id == null) {
+        if (props.id === null || props.id === undefined) {
             clickCounts = 0
         }
 

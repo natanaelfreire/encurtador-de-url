@@ -110,12 +110,6 @@ export class PrismaUrlRepository implements UrlRepository {
     }
 
     async remove (id: number, userId: number): Promise<void> {
-        // const url = await prisma.url.findFirst({
-        //     where: {
-        //         id: id
-        //     }
-        // })
-
         await prisma.url.update({
             where: {
                 id: id,

@@ -13,7 +13,7 @@ export class UpdateUser {
   }: UpdateUserDto): Promise<ResponseUserDTO> {
     const user = await this.userRepository.findOne(id)
 
-    if (user == null) { throw new Error('Usuário não encontrado.') }
+    if (user === null) { throw new Error('Usuário não encontrado.') }
 
     const newUserData = new User({
       email,

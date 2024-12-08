@@ -29,11 +29,11 @@ export class User {
     }
 
     private validateUser (props: UserProps) {
-        if (props.email == null || props.email.length === 0) {
+        if (props.email === null || props.email === undefined || props.email.length === 0) {
             throw new Error('Preencha o campo "email"')
         }
       
-        if (props.password == null || props.password.length === 0) {
+        if (props.password === null || props.password === undefined || props.password.length === 0) {
             throw new Error('Preencha o campo "senha"')
         }
       
@@ -47,7 +47,7 @@ export class User {
 
         let password = props.password
 
-        if (props.id == null) {
+        if (props.id === null || props.id === undefined) {
             password = this.generateHash(props.password)
         }
 
@@ -56,5 +56,4 @@ export class User {
             password
         }
     }
-
 }

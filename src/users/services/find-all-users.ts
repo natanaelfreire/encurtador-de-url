@@ -1,12 +1,10 @@
-import { User } from "../entities/user";
+import { ResponseUserDTO } from "../repositories/dto/response-user-dto";
 import { UserRepository } from "../repositories/user-repository";
-
-type FindAllUsersResponse = Omit<User, "password">
 
 export class FindAllUsers {
     constructor (private readonly userRepository: UserRepository) {}
 
-    async execute (): Promise<FindAllUsersResponse[]> {
+    async execute (): Promise<ResponseUserDTO[]> {
         const users = await this.userRepository.findAll()
 
         return users

@@ -4,7 +4,7 @@ GET http://localhost:3000/users
 
 ###
 
-GET http://localhost:3000/users/1
+GET http://localhost:3000/users/4
 
 ###
 
@@ -12,8 +12,8 @@ POST http://localhost:3000/users
 content-type: application/json
 
 {
-    "email": "matheus@email.com",
-    "password": "04892wwm"
+    "email": "guilherme@email.com",
+    "password": "2910str1"
 }
 
 ###
@@ -36,39 +36,39 @@ POST http://localhost:3000/authentication
 content-type: application/json
 
 {
-    "email": "natanael@email.com",
-    "password": "12345abc"
+    "email": "guilherme@email.com",
+    "password": "2910str1"
 }
 
 ### Urls
 
 POST http://localhost:3000/urls
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3VpbGhlcm1lQGVtYWlsLmNvbSIsInVzZXJJZCI6NCwiaWF0IjoxNzMzNjk5MzYwLCJleHAiOjE3MzM3MzUzNjB9.OLxwuDexnHjBgvz9VS9TLe3dTJfmiUX87CYryzjj-xc
 
 {
-    "originalUrl": "https://www.postgresql.org/download/linux/ubuntu/"
+    "originalUrl": "https://medium.com/@kupriyanov.vo/setup-hono-drizzle-orm-template-project-for-cloudflare-d1-and-r2-bucket-9e13cdd37156"
 }
 
 ###
 
 GET http://localhost:3000/urls
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3VpbGhlcm1lQGVtYWlsLmNvbSIsInVzZXJJZCI6NCwiaWF0IjoxNzMzNjk5MzYwLCJleHAiOjE3MzM3MzUzNjB9.OLxwuDexnHjBgvz9VS9TLe3dTJfmiUX87CYryzjj-xc
 
 ### 
 
-PATCH http://localhost:3000/urls/16
+PATCH http://localhost:3000/urls/23
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3VpbGhlcm1lQGVtYWlsLmNvbSIsInVzZXJJZCI6NCwiaWF0IjoxNzMzNjk5MzYwLCJleHAiOjE3MzM3MzUzNjB9.OLxwuDexnHjBgvz9VS9TLe3dTJfmiUX87CYryzjj-xc
 
 {
-    "originalUrl": "https://code.visualstudio.com/"
+    "originalUrl": "https://medium.com/@harendra21/how-i-am-using-a-lifetime-100-free-server-bd241e3a347a"
 }
 
 ###
 
-DELETE http://localhost:3000/urls/17
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+DELETE http://localhost:3000/urls/22
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3VpbGhlcm1lQGVtYWlsLmNvbSIsInVzZXJJZCI6NCwiaWF0IjoxNzMzNjk5MzYwLCJleHAiOjE3MzM3MzUzNjB9.OLxwuDexnHjBgvz9VS9TLe3dTJfmiUX87CYryzjj-xc
 
 ###
 

@@ -1,5 +1,4 @@
 import { UpdateOriginalUrlDto } from "../dto/update-original-url-dto";
-import { Url } from "../entities/url";
 import { UrlRepository } from "../repositories/url-repository";
 
 export class UpdateOriginalUrl {

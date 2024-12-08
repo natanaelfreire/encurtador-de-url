@@ -11,6 +11,15 @@ export class CreateUrl {
         originalUrl,
         userId
       }: CreateUrlDto): Promise<void> {
+        let shortUrlAlreadyExists = true
+        let shortUrl = ''
+
+        while (shortUrlAlreadyExists) {
+            shortUrl = this.generateShortUrl()
+            const urlExists = await this.urlRepository.findByShortUrl(shortUrl)
+            shortUrlAlreadyExists = urlExists !== null
+        }
+        
         const url = new Url({
             originalUrl: originalUrl,
             clickCounts: 0,
