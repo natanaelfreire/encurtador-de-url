@@ -6,6 +6,7 @@ export interface UrlRepository {
     findOne: (id: number) => Promise<ResponseUrlDto | null>
     findByShortUrl: (shortUrl: string) => Promise<ResponseUrlDto | null>
     findAllByUser: (userId: number) => Promise<ResponseUrlDto[]>
-    update: (id: number, url: RequestUrlDto) => Promise<void>
-    remove: (id: number) => Promise<void>
+    updateOriginalUrl: (id: number, originalUrl: string, userId: number) => Promise<void>
+    remove: (id: number, userId: number) => Promise<void>
+    updateClickCounts: (shortUrl: string) => Promise<void>
 }

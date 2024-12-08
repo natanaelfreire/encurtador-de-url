@@ -18,8 +18,6 @@ export class CreateUrl {
             userId: userId
         })
 
-        console.log(url)
-    
         await this.urlRepository.create(url)
     }
 

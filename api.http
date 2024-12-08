@@ -44,13 +44,32 @@ content-type: application/json
 
 POST http://localhost:3000/urls
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2MTYzMjIsImV4cCI6MTczMzY1MjMyMn0.OywJRx0AAuCghtyb553m6scD5_JJnju0w7gtwCFZVvw
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
 
 {
-    "originalUrl": "https://www.codeblocks.org"
+    "originalUrl": "https://www.postgresql.org/download/linux/ubuntu/"
 }
 
 ###
 
 GET http://localhost:3000/urls
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2MTYzMjIsImV4cCI6MTczMzY1MjMyMn0.OywJRx0AAuCghtyb553m6scD5_JJnju0w7gtwCFZVvw
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+
+### 
+
+PATCH http://localhost:3000/urls/16
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+
+{
+    "originalUrl": "https://code.visualstudio.com/"
+}
+
+###
+
+DELETE http://localhost:3000/urls/17
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2NTg4MDUsImV4cCI6MTczMzY5NDgwNX0.7DGY8HXxZFSbubnPRtO25Zzric0RwNH476VuAZxxGo0
+
+###
+
+GET http://localhost:3000/fx9hQw

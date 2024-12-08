@@ -21,8 +21,11 @@ routes.post('/urls', urlController.create)
 
 // Necessitam autenticação
 routes.get('/urls', urlController.indexByUserId)
-routes.put('/urls/:id', userController.update)
-routes.delete('/urls/:id', userController.delete)
+routes.patch('/urls/:id', urlController.changeOriginalUrl)
+routes.delete('/urls/:id', urlController.delete)
+
+// Não necessita de autenticação
+routes.get('/:shortUrl', urlController.clickShortUrl)
 
 
 export default routes;

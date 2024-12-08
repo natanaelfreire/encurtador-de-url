@@ -3,9 +3,10 @@ import { PrismaUrlRepository } from '../repositories/prisma-repository/prisma-ur
 import { GetUrlsByUser } from '../services/get-urls-by-user'
 import { CreateUrl } from '../services/create-url'
 import { GetOriginalUrlByShortUrl } from '../services/get-original-url-by-short-url'
-import { UpdateUrl } from '../services/update-url'
+import { UpdateOriginalUrl } from '../services/update-original-url'
 import { RemoveUrl } from '../services/remove-url'
 import { GetUserIdByToken } from '../../authentication/services/get-user-id-by-token'
+import { CountsClickShortUrl } from '../services/counts-click-short-url'
 
 export default class UrlController {
     async indexByUserId (request: Request, response: Response): Promise<any> {
@@ -52,46 +53,27 @@ export default class UrlController {
             return response.status(400).json({ error: `${erro}` })
         }
     }
-
-    async showUrlByShortUrl (request: Request, response: Response): Promise<any> {
-        try {
-            const { shortUrl } = request.params
-
-            const prismaUrlRepository = new PrismaUrlRepository()
-            const getOriginalUrlByShortUrl = new GetOriginalUrlByShortUrl(prismaUrlRepository)
-            const url = await getOriginalUrlByShortUrl.execute(shortUrl)
-
-            if (url == null) {
-                return response.status(400).json({
-                    error: 'Url não encontrada.'
-                })
-            }
-        
-            return response.status(200).json(url)
-            
-        } catch (error: any) {
-            const erro: string = error.toString()
-            return response.status(400).json({ error: `${erro}` })
-        }
-    }
-
-    async update (request: Request, response: Response): Promise<any> {
+    
+    async changeOriginalUrl (request: Request, response: Response): Promise<any> {
         try {
             const {
-                clickCounts,
-                originalUrl,
-                shortUrl
+                originalUrl                
             } = request.body
 
             const { id } = request.params
+            const getUserIdByToken = new GetUserIdByToken()
+            const userId = getUserIdByToken.execute(request.headers.authorization ?? '')
+
+            if (userId === null) {
+                throw new Error("Usuário não autenticado.")
+            }
 
             const prismaUrlRepository = new PrismaUrlRepository()
-            const updateUrl = new UpdateUrl(prismaUrlRepository)
-            await updateUrl.execute({
+            const updateOriginalUrl = new UpdateOriginalUrl(prismaUrlRepository)
+            await updateOriginalUrl.execute({
                 id: Number(id),
-                clickCounts,
                 originalUrl,
-                shortUrl
+                userId
             })
 
             return response.status(200).send()
@@ -105,11 +87,37 @@ export default class UrlController {
     async delete (request: Request, response: Response): Promise<any> {
         try {
             const { id } = request.params
+            const getUserIdByToken = new GetUserIdByToken()
+            const userId = getUserIdByToken.execute(request.headers.authorization ?? '')
+
+            if (userId === null) {
+                throw new Error("Usuário não autenticado.")
+            }
+
             const prismaUrlRepository = new PrismaUrlRepository()
             const removeUrl = new RemoveUrl(prismaUrlRepository)
-            await removeUrl.execute(Number(id))
+            await removeUrl.execute(Number(id), userId)
 
             return response.status(200).send()
+
+        } catch (error: any) {
+            const erro: string = error.toString()
+            return response.status(400).json({ error: `${erro}` })
+        }
+    }
+
+    async clickShortUrl (request: Request, response: Response): Promise<any> {
+        try {
+            const { shortUrl } = request.params
+
+            const prismaUrlRepository = new PrismaUrlRepository()
+            const getOriginalUrlByShortUrl = new GetOriginalUrlByShortUrl(prismaUrlRepository)
+            const originalUrl = await getOriginalUrlByShortUrl.execute(shortUrl)
+            
+            const updateClickCounts = new CountsClickShortUrl(prismaUrlRepository)
+            await updateClickCounts.execute(shortUrl)
+
+            return response.redirect(originalUrl as string)
 
         } catch (error: any) {
             const erro: string = error.toString()

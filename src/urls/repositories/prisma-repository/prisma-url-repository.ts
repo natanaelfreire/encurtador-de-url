@@ -19,9 +19,7 @@ export class PrismaUrlRepository implements UrlRepository {
         const url = await prisma.url.findFirst({
             where: {
                 id: id,
-                NOT: {
-                    removedAt: null
-                }
+                removedAt: null
             },
             include: {
                 user: true
@@ -49,12 +47,7 @@ export class PrismaUrlRepository implements UrlRepository {
         const url = await prisma.url.findFirst({
             where: {
                 shortUrl: shortUrl,
-                NOT: {
-                    removedAt: null
-                }
-            },
-            include: {
-                user: true
+                removedAt: null
             }
         })
 
@@ -67,7 +60,7 @@ export class PrismaUrlRepository implements UrlRepository {
                 createdAt: url.createdAt,
                 updatedAt: url.updatedAt,
                 removedAt: url.removedAt,
-                userEmail: url.user?.email ?? '',
+                userEmail: '',
                 userId: url.userId
             }
         }
@@ -79,13 +72,12 @@ export class PrismaUrlRepository implements UrlRepository {
         const urls = await prisma.url.findMany({
             where: {
                 userId: userId,
+                removedAt: null
             },
             include: {
                 user: true
             }
         })
-
-        console.log('urls: ', urls)
 
         return urls.map(item => {
             let url : ResponseUrlDto = {
@@ -104,36 +96,51 @@ export class PrismaUrlRepository implements UrlRepository {
         })
     }
 
-    async update (id: number, url: RequestUrlDto): Promise<void> {
+    async updateOriginalUrl (id: number, originalUrl: string, userId: number): Promise<void> {
         await prisma.url.update({
             where: {
-                id: id
+                id: id,
+                userId: userId,
+                removedAt: null
             },
             data: {
-                originalUrl: url.originalUrl,
-                shortUrl: url.shortUrl,
-                clickCounts: url.clickCounts,
-                userId: url.userId
+                originalUrl: originalUrl,
             }
         })
     }
 
-    async remove (id: number): Promise<void> {
-        const url = await prisma.url.findFirst({
-            where: {
-                id: id
-            }
-        })
+    async remove (id: number, userId: number): Promise<void> {
+        // const url = await prisma.url.findFirst({
+        //     where: {
+        //         id: id
+        //     }
+        // })
 
         await prisma.url.update({
             where: {
-                id: id
+                id: id,
+                removedAt: null,
+                userId: userId
             },
             data: {
-                ...url,
                 removedAt: new Date().toISOString()
             }
         })
     }
 
+    async updateClickCounts (shortUrl: string): Promise<void> {
+        const url = await this.findByShortUrl(shortUrl)
+
+        if (url !== null) {
+            await prisma.url.update({
+                where: {
+                    id: url.id,
+                    shortUrl: shortUrl
+                },
+                data: {
+                    clickCounts: url.clickCounts + 1
+                }
+            })
+        }
+    }
 }
