@@ -8,13 +8,17 @@ export class CreateUrl {
     constructor (private readonly urlRepository: UrlRepository) {}
 
     async execute ({
-        originalUrl
+        originalUrl,
+        userId
       }: CreateUrlDto): Promise<void> {
         const url = new Url({
             originalUrl: originalUrl,
             clickCounts: 0,
-            shortUrl: this.generateShortUrl()
+            shortUrl: this.generateShortUrl(),
+            userId: userId
         })
+
+        console.log(url)
     
         await this.urlRepository.create(url)
     }

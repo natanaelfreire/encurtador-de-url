@@ -79,14 +79,13 @@ export class PrismaUrlRepository implements UrlRepository {
         const urls = await prisma.url.findMany({
             where: {
                 userId: userId,
-                NOT: {
-                    removedAt: null
-                }
             },
             include: {
                 user: true
             }
         })
+
+        console.log('urls: ', urls)
 
         return urls.map(item => {
             let url : ResponseUrlDto = {

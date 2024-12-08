@@ -18,7 +18,7 @@ export class AuthenticateUser {
             const isPasswordCorrect = this.validatePassword(password, user.password)
 
             if (isPasswordCorrect) {
-                const token = jwt.sign({ user: user.email, userId: user.id }, this.SECRET, { expiresIn: 60 })
+                const token = jwt.sign({ user: user.email, userId: user.id }, this.SECRET, { expiresIn: '10h' })
 
                 return token
                 

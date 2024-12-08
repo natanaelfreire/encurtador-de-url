@@ -3,6 +3,7 @@ export interface UrlProps {
     originalUrl: string
     shortUrl: string
     clickCounts: number
+    userId?: number
 }
 
 export class Url {
@@ -22,6 +23,10 @@ export class Url {
 
     get clickCounts (): number {
         return this.props.clickCounts
+    }
+
+    get userId (): number | undefined {
+        return this.props.userId
     }
 
     private validateUrl (props: UrlProps) {

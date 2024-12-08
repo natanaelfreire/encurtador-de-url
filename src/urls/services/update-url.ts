@@ -2,7 +2,7 @@ import { UpdateUrlDto } from "../dto/update-url-dto";
 import { Url } from "../entities/url";
 import { UrlRepository } from "../repositories/url-repository";
 
-export class CreateUrl {
+export class UpdateUrl {
     constructor (private readonly urlRepository: UrlRepository) {}
 
     async execute ({

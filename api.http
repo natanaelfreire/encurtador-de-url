@@ -39,3 +39,18 @@ content-type: application/json
     "email": "natanael@email.com",
     "password": "12345abc"
 }
+
+### Urls
+
+POST http://localhost:3000/urls
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2MTYzMjIsImV4cCI6MTczMzY1MjMyMn0.OywJRx0AAuCghtyb553m6scD5_JJnju0w7gtwCFZVvw
+
+{
+    "originalUrl": "https://www.codeblocks.org"
+}
+
+###
+
+GET http://localhost:3000/urls
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF0YW5hZWxAZW1haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE3MzM2MTYzMjIsImV4cCI6MTczMzY1MjMyMn0.OywJRx0AAuCghtyb553m6scD5_JJnju0w7gtwCFZVvw
