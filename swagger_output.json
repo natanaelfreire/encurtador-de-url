@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "v1.0.0",
-    "title": "Swagger Demo Project",
+    "title": "Encurtador de URL API",
     "description": "Implementation of Swagger with TypeScript"
   },
   "servers": [
@@ -178,8 +178,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"

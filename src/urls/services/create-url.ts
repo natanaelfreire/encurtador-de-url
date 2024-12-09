@@ -1,5 +1,6 @@
 import { CreateUrlDto } from "../dto/create-url-dto";
 import { Url } from "../entities/url";
+import { ResponseUrlDto } from "../repositories/dto/response-url-dto";
 import { UrlRepository } from "../repositories/url-repository";
 import { CHARS } from "../utilities/chars";
 import { getRandomValueFromArray } from "../utilities/get-random-value-from-array";
@@ -10,7 +11,7 @@ export class CreateUrl {
     async execute ({
         originalUrl,
         userId
-      }: CreateUrlDto): Promise<void> {
+      }: CreateUrlDto): Promise<ResponseUrlDto> {
         let shortUrlAlreadyExists = true
         let shortUrl = ''
 
@@ -27,7 +28,9 @@ export class CreateUrl {
             userId: userId
         })
 
-        await this.urlRepository.create(url)
+        const response = await this.urlRepository.create(url)
+
+        return response
     }
 
     private generateShortUrl (): string {

@@ -4,8 +4,8 @@ import { ResponseUrlDto } from "../dto/response-url-dto";
 import { UrlRepository } from "../url-repository";
 
 export class PrismaUrlRepository implements UrlRepository {
-    async create (url: RequestUrlDto): Promise<void> {
-        await prisma.url.create({
+    async create (url: RequestUrlDto): Promise<ResponseUrlDto> {
+        const resp = await prisma.url.create({
             data: {
                 originalUrl: url.originalUrl,
                 shortUrl: url.shortUrl,
@@ -13,6 +13,18 @@ export class PrismaUrlRepository implements UrlRepository {
                 userId: url.userId
             }
         })
+
+        return {
+            id: resp.id,
+            clickCounts: resp.clickCounts,
+            originalUrl: resp.originalUrl,
+            shortUrl: resp.shortUrl,
+            userEmail: '',
+            userId: resp.userId,
+            removedAt: resp.removedAt,
+            updatedAt: resp.updatedAt,
+            createdAt: resp.createdAt
+        }
     }
 
     async findOne (id: number): Promise<ResponseUrlDto | null> {

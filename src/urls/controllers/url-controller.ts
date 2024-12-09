@@ -41,12 +41,12 @@ export default class UrlController {
 
             const prismaUrlRepository = new PrismaUrlRepository()
             const createUrl = new CreateUrl(prismaUrlRepository)
-            await createUrl.execute({
+            const url = await createUrl.execute({
                 originalUrl: originalUrl,
                 userId: userId ? userId : undefined
             })
 
-            return response.status(201).send()
+            return response.status(200).send(`http://localhost:${process.env.PORT}/${url.shortUrl}`)
             
         } catch (error: any) {
             const erro: string = error.toString()
