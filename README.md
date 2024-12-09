@@ -16,6 +16,7 @@ Esta seção contém instruções para executar o projeto.
 2. npm install
 3. Crie um arquivo .env contendo as variáveis de ambiente baseado no arquivo .env.example
 4. npx prisma migrate dev
+5. npm run start:dev
 
 ## Uso da API
 
