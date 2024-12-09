@@ -1,5 +1,6 @@
 import express from 'express'
-import routes from './routes'
+import swaggerUi from 'swagger-ui-express';
+import { routes } from './routes/routes'
 import * as dotenv from 'dotenv'
 
 if (process.env.NODE_ENV === 'development') {
@@ -7,6 +8,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const app = express()
+
+const swaggerOutput =  require("../swagger_output.json")
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 
 app.use(express.json())
 app.use(routes)

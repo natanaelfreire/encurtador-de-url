@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import UserController from './users/controllers/user-controller'
-import AuthenticationController from './authentication/controllers/authentication-controller'
-import UrlController from './urls/controllers/url-controller'
+import UserController from '../users/controllers/user-controller'
+import AuthenticationController from '../authentication/controllers/authentication-controller'
+import UrlController from '../urls/controllers/url-controller'
 
 const routes = Router()
 const userController = new UserController()
@@ -27,4 +27,4 @@ routes.delete('/urls/:id', urlController.delete)
 // Não necessita de autenticação
 routes.get('/:shortUrl', urlController.clickShortUrl)
 
-export default routes;
+export { routes };
