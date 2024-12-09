@@ -22,19 +22,23 @@ Esta seção contém instruções para executar o projeto.
 ### Autenticação
 POST /authentication <br/>
 Request body:
+```json
 {
-    "email": "exemplo@email.com"
+    "email": "exemplo@email.com",
     "password": "senha12345"
 }
+```
 
-- Descrição: Rota para autenticação do usuário. O usuário informa o e-mail e a senha no corpo da requisição e recebe um token de retorno caso as credenciais estejam corretas. Este token deverá ser enviado nos headers das requisições no campo authorization para comprovar a identidade do usuário.
+- Descrição: Rota para autenticação do usuário. O usuário informa o e-mail e a senha no corpo da requisição e recebe um token de retorno caso as credenciais estejam corretas. Este token deverá ser enviado nos headers das requisições no campo authorization para comprovar a identidade do usuário. Um usuário pode ser criado nas rotas destinadas para isso.
 
 ### Criar uma URL curta
 POST /urls <br/>
 Request body: 
+```json
 {
     "originalUrl": "https://exemplo.com"
 }
+```
 
 - Descrição: Rota para encurtar uma URL. O usuário informa a URL original e é criado uma URL curta. Caso o usuário esteja autenticado via token, esta URL criada é salva no banco de dados para este usuário.
 
@@ -53,9 +57,11 @@ GET /urls <br/>
 PATCH /urls/{id} <br/>
 (necessário autenticação via token) <br/>
 Request body: 
+```json
 {
     "originalUrl": "https://exemplo.com"
 }
+```
 
 - Descrição: Altera a URL original de uma URL curta salva.
 
