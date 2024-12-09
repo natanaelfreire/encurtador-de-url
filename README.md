@@ -12,15 +12,15 @@ Tecnologias utilizadas:
 
 Esta seção contém instruções para executar o projeto.
 
-1. Clone o repositório: > git clone https://github.com/natanaelfreire/encurtador-de-url.git
-2. > npm install
+1. Clone o repositório: git clone https://github.com/natanaelfreire/encurtador-de-url.git
+2. npm install
 3. Crie um arquivo .env contendo as variáveis de ambiente baseado no arquivo .env.example
-4. > npx prisma migrate dev
+4. npx prisma migrate dev
 
 ## Uso da API
 
 ### Autenticação
-POST /authentication
+POST /authentication <br/>
 Request body:
 {
     "email": "exemplo@email.com"
@@ -30,7 +30,7 @@ Request body:
 - Descrição: Rota para autenticação do usuário. O usuário informa o e-mail e a senha no corpo da requisição e recebe um token de retorno caso as credenciais estejam corretas. Este token deverá ser enviado nos headers das requisições no campo authorization para comprovar a identidade do usuário.
 
 ### Criar uma URL curta
-POST /urls
+POST /urls <br/>
 Request body: 
 {
     "originalUrl": "https://exemplo.com"
@@ -44,14 +44,14 @@ GET /{shortUrl}
 - Descrição: Redireciona para a URL original com base no código de URL encurtada.
 
 ### Listar URLs encurtadas por usuário
-GET /urls
+GET /urls <br/>
 (necessário autenticação via token)
 
 - Descrição: Lista todas as URLs criadas de um usuário específico
 
 ### Alterar URL original 
-PATCH /urls/{id}
-(necessário autenticação via token)
+PATCH /urls/{id} <br/>
+(necessário autenticação via token) <br/>
 Request body: 
 {
     "originalUrl": "https://exemplo.com"
@@ -60,8 +60,8 @@ Request body:
 - Descrição: Altera a URL original de uma URL curta salva.
 
 ### Excluir URL curta 
-DELETE /urls/{id}
-(necessário autenticação via token)
+DELETE /urls/{id} <br/>
+(necessário autenticação via token) <br/>
 
 - Descrição: Exclui logicamente a URL curta do banco de dados preenchendo a data de remoção.
 
