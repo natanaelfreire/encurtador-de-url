@@ -1,5 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 import swaggerOutput from "../swagger_output.json";
 import { routes } from './routes/routes'
 import * as dotenv from 'dotenv'
@@ -9,6 +10,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const app = express()
+
+app.use(cors({
+    origin: '*'
+}));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 
