@@ -46,7 +46,11 @@ export default class UrlController {
                 userId: userId ? userId : undefined
             })
 
-            return response.status(200).send(`http://localhost:${process.env.PORT}/${url.shortUrl}`)
+            const domainUrl = process.env.NODE_ENV === 'development' ? 
+                `http://localhost:${process.env.PORT}/${url.shortUrl}` :
+                process.env.PROD_URL
+
+            return response.status(200).send(`${domainUrl}`)
             
         } catch (error: any) {
             const erro: string = error.toString()

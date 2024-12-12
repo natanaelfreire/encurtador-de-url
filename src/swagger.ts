@@ -1,7 +1,5 @@
 import swaggerAutogen from 'swagger-autogen';
 
-const url = 'https://encurtador-de-url-production.up.railway.app'
-
 const doc = {
     info: {
         version: 'v1.0.0',
@@ -10,9 +8,13 @@ const doc = {
     },
     servers: [
         {
-            url: `${url}`,
-            description: ''
+            url: 'http://localhost:3000',
+            description: 'Ambiente local'
         },
+        {
+            url: 'https://encurtador-de-url-production.up.railway.app',
+            description: 'Ambiente núvem'
+        }
     ],
     components: {
         securitySchemes: {

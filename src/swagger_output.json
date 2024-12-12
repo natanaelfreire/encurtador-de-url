@@ -7,8 +7,12 @@
   },
   "servers": [
     {
+      "url": "http://localhost:3000",
+      "description": "Ambiente local"
+    },
+    {
       "url": "https://encurtador-de-url-production.up.railway.app",
-      "description": ""
+      "description": "Ambiente núvem"
     }
   ],
   "paths": {
