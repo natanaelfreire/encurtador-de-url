@@ -1,6 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 
-const url = 'https://encurtador-de-url-production.up.railway.app'
+const url = process.env.NODE_ENV === 'production' ? process.env.PROD_URL : 'http://localhost:3000'
 
 const doc = {
     info: {
@@ -24,7 +24,7 @@ const doc = {
     }
 };
 
-const outputFile = './swagger_output.json';
+const outputFile = './src/swagger_output.json';
 const endpointsFiles = ['./src/routes/routes.ts'];
 
 swaggerAutogen({openapi: '3.0.0'})(outputFile, endpointsFiles, doc);
