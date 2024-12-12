@@ -46,7 +46,7 @@ Request body:
 ### Redirecionar para a URL original
 GET /{shortUrl}
 
-- Descrição: Redireciona para a URL original com base no código de URL encurtada.
+- Descrição: Redireciona para a URL original com base no código de URL encurtada. Contabiliza o número de clicks toda vez que a URL é acessada.
 
 ### Listar URLs encurtadas por usuário
 GET /urls <br/>
