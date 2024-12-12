@@ -14,6 +14,8 @@ export default class UrlController {
             const getUserIdByToken = new GetUserIdByToken()
             const userId = getUserIdByToken.execute(request.headers.authorization ?? '')
 
+            console.log(request.headers)
+
             if (userId === null) {
                 throw new Error("Usuário não autenticado.")
             }
@@ -47,10 +49,10 @@ export default class UrlController {
             })
 
             const domainUrl = process.env.NODE_ENV === 'development' ? 
-                `http://localhost:${process.env.PORT}/${url.shortUrl}` :
+                `http://localhost:${process.env.PORT}` :
                 process.env.PROD_URL
 
-            return response.status(200).send(`${domainUrl}`)
+            return response.status(200).send(`${domainUrl}/${url.shortUrl}`)
             
         } catch (error: any) {
             const erro: string = error.toString()

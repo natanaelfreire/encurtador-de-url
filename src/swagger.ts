@@ -23,6 +23,9 @@ const doc = {
                 scheme: 'bearer',
             }
         }
+    },
+    security: {
+        bearerAuth: []
     }
 };
 
