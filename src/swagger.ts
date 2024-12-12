@@ -1,6 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 
-const url = process.env.NODE_ENV === 'production' ? process.env.PROD_URL : 'http://localhost:3000'
+const url = 'https://encurtador-de-url-production.up.railway.app'
 
 const doc = {
     info: {
