@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "undefined",
+      "url": "https://encurtador-de-url-production.up.railway.app",
       "description": ""
     }
   ],
