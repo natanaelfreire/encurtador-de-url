@@ -1,5 +1,7 @@
 import swaggerAutogen from 'swagger-autogen';
 
+const url = process.env.NODE_ENV === 'production' ? process.env.PROD_URL : 'http://localhost:3000'
+
 const doc = {
     info: {
         version: 'v1.0.0',
@@ -8,7 +10,7 @@ const doc = {
     },
     servers: [
         {
-            url: 'http://localhost:3000',
+            url: `${url}`,
             description: ''
         },
     ],
