@@ -12,7 +12,7 @@ const doc = {
             description: 'Ambiente local'
         },
         {
-            url: 'https://encurtador-de-url-production.up.railway.app',
+            url: 'https://encurtador.up.railway.app',
             description: 'Ambiente núvem'
         }
     ],
