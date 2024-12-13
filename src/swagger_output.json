@@ -322,11 +322,14 @@
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   },
-  "security": {
-    "bearerAuth": []
-  }
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
 }

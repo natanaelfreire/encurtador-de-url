@@ -14,8 +14,6 @@ export default class UrlController {
             const getUserIdByToken = new GetUserIdByToken()
             const userId = getUserIdByToken.execute(request.headers.authorization ?? '')
 
-            console.log(request.headers)
-
             if (userId === null) {
                 throw new Error("Usuário não autenticado.")
             }

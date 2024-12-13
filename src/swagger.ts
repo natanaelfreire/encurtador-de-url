@@ -21,12 +21,12 @@ const doc = {
             bearerAuth: {
                 type: 'http',
                 scheme: 'bearer',
+                bearerFormat: 'JWT'
             }
         }
     },
-    security: {
-        bearerAuth: []
-    }
+    security: [ { bearerAuth: [] } ],
+
 };
 
 const outputFile = './src/swagger_output.json';

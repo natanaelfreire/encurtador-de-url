@@ -16,9 +16,10 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.use(express.json())
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 
-app.use(express.json())
 app.use(routes)
 
 const port = process.env.PORT != null ? Number(process.env.PORT) : 3000
