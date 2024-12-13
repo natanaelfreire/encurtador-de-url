@@ -76,3 +76,7 @@ DELETE /urls/{id} <br/>
 
 A documentação da API pode ser encontrada no Swagger. Para visualizá-la, acesse http://localhost:3000/api-docs
 
+## Hospedagem no Railway.app
+
+Este projeto está hospedado no Railway.app. Para acessá-lo, acesse: https://encurtador.up.railway.app/api-docs/
+
